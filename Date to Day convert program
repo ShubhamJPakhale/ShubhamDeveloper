@@ -1,0 +1,110 @@
+#include<stdio.h>
+int check_year(int y)
+{
+    int a=y%400;
+    int c=0;
+    if(a>=100 && a<200)
+        c=5;
+    else if(a>=200 && a<300)
+        c=3;
+    else if(a>=300 && a<400)
+        c=1;
+
+        return c;
+}
+int check_leap(int y)
+{
+    int f=0;
+    if((y%400==0) || (y%100!=0 && y%4==0))
+    {
+        f=1;
+        printf("This is leap year...\n");
+    }
+    else
+    {
+        f=0;
+        printf("This is not leap year....\n");
+    }
+    return f;
+}
+int check_month(int i,int r,int f)
+{
+    int m=0;
+    switch(i)
+    {
+    case 1:
+        m=r;
+        break;
+    case 2:
+        m=3+r;
+         break;
+    case 3:
+        m=3+f+r;
+         break;
+    case 4:
+        m=3+f+3+r;
+         break;
+    case 5:
+        m=3+f+3+2+r;
+         break;
+    case 6:
+        m=3+f+3+2+3+r;
+         break;
+    case 7:
+        m=3+f+3+2+3+2+r;
+         break;
+    case 8:
+        m=3+f+3+2+3+2+3+r;
+         break;
+    case 9:
+        m=3+f+3+2+3+2+3+3+r;
+         break;
+    case 10:
+        m=3+f+3+2+3+2+3+3+2+r;
+         break;
+    case 11:
+        m=3+f+3+2+3+2+3+3+2+3+r;
+         break;
+    case 12:
+        m=3+f+3+2+3+2+3+3+2+3+2+r;
+         break;
+    }
+    return m;
+}
+int check_year_problem(int y)
+{
+    int l=y%100;
+    return l-1;
+}
+int check_sum(int k)
+{
+    if(k%7==0)
+        printf("\n   Sunday   ");
+    else if(k%7==1)
+        printf("\n   Monday   ");
+    else if(k%7==2)
+        printf("\n   Tuesday  ");
+    else if(k%7==3)
+        printf("\n   Wednesday   ");
+    else if(k%7==4)
+        printf("\n   Thursday    ");
+    else if(k%7==5)
+        printf("\n   Friday    ");
+    else
+        printf("\n   Saturday   ");
+
+}
+int main()
+{
+   int day=0;int month=0;int year=0;
+   printf("Enter date= ");
+   scanf("%d/%d/%d",&day,&month,&year);
+    int sum=0;
+
+     sum= check_year(year)+ check_month(month,day,check_leap(year))+ check_year_problem(year)+((check_year_problem(year))/4);
+     printf("No of days are= %d",sum);
+
+     check_sum(sum);
+     return 0;
+
+}
