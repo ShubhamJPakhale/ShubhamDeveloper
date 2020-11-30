@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>
+		EMI CALCULATOR
+	</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function EMI(no,rate,year)
+		{
+			var no1=Math.pow((1+rate),year);
+			var EMI=(no*rate*((no1)/(no1-1)));
+			document.write(EMI+"RS PER YEAR");
+		}
+
+		EMI(100,5,2);
+	</script>
+</body>
+</html>
